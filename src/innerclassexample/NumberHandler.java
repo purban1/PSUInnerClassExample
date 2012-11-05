@@ -8,23 +8,24 @@ import java.util.*;
  */
 public class NumberHandler {
 
-    private List<String> numberHolder;
-    private List<String> evenNumbers = new ArrayList<String>();
-    private List<String> oddNumbers = new ArrayList<String>();
-    private int theSum;
+    private List<Double> numberHolder;
+    private List<Double> evenNumbers = new ArrayList<Double>();
+    private List<Double> oddNumbers = new ArrayList<Double>();
+    private Double theSum=0.0;
     private analyzeTheNumbers analysis = new analyzeTheNumbers();
 
     public NumberHandler() {
-        this.numberHolder = new ArrayList<String>();
+        this.numberHolder = new ArrayList<Double>();
     }
 
     public void addToTheList(String num) {
-        this.numberHolder.add(num);
+        this.numberHolder.add(Double.parseDouble(num));
     }
 
     public void evaluateTheNumberList() {
         this.analysis.collectTheEvens();
         Collections.sort(evenNumbers);
+        System.out.println(evenNumbers);
         this.analysis.collectTheOdds();
         Collections.sort(oddNumbers);
         this.analysis.determineTheRunningTotal();
@@ -34,24 +35,24 @@ public class NumberHandler {
     private class analyzeTheNumbers {
 
         public void collectTheEvens() {
-            for (String numList : numberHolder) {
-                if (Double.parseDouble(numList) % 2 == 0) {
+            for (Double numList : numberHolder) {
+                if (numList % 2 == 0) {
                     evenNumbers.add(numList);
                 }
             }
         }
 
         public void collectTheOdds() {
-            for (String numList : numberHolder) {
-                if (Double.parseDouble(numList) % 2 != 0) {
+            for (Double numList : numberHolder) {
+                if (numList % 2 != 0) {
                     oddNumbers.add(numList);
                 }
             }
         }
 
         public void determineTheRunningTotal() {
-            for (String numList : numberHolder) {
-                theSum += Integer.parseInt(numList);
+            for (Double numList : numberHolder) {
+                theSum += numList;
             }
         }
     }

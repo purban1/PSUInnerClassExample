@@ -2,7 +2,7 @@ package innerclassexample;
 
 import java.util.Scanner;
 
-public class InnerClassExample {
+public class StartupInnerClassExample {
 
     /**
      * @param args the command line arguments
